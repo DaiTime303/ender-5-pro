@@ -47,6 +47,17 @@
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
 
+#define X_MAX_POS 220
+#define Y_MAX_POS 220
+
+// Homing bump divisor
+#define HOMING_BUMP_DIVISOR { 8, 8, 4 }
+
+// Block buffer size
+#define BLOCK_BUFFER_SIZE 16
+
+// Axis relative modes
+#define AXIS_RELATIVE_MODES { false, false, false }
 // Default axis steps per unit
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 415 } // X, Y, Z, E (E is placeholder — calibrate E-steps)
 
