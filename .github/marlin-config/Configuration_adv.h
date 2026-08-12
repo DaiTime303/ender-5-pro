@@ -1,34 +1,67 @@
 /*
-  Minimal Marlin Configuration_adv.h tailored choices for:
-  - TMC2209 UART use
-  - BLTouch behavior
-  - Conservative defaults
+  Marlin Configuration_adv.h - additions for SKR Mini E3 V2.0 / Ender 5 Pro
+  This file contains advanced settings: stepper currents, TMC defaults, probe delays
+  and a few safety tweaks. Review and tune currents and probe offsets before first
+  power-up. Commit is placed on branch: marlin-skr-mini-e3-v2-ender5pro
 */
 
 #ifndef CONFIGURATION_ADV_H
 #define CONFIGURATION_ADV_H
 
-//----------------------------- TMC2209 --------------------------------------
-// Enable TMC UART (runtime configuration via UART)
-#define TMC_USE_SW_UART // Some SKR Mini E3 V2 builds require software UART; Marlin will attempt hardware first
+// -------------------------- Stepper motor currents --------------------------
+// Values are in mA. Start conservative and tune up as needed.
+#ifndef X_CURRENT
+  #define X_CURRENT 800
+#endif
+#ifndef Y_CURRENT
+  #define Y_CURRENT 800
+#endif
+#ifndef Z_CURRENT
+  #define Z_CURRENT 800
+#endif
+#ifndef E0_CURRENT
+  #define E0_CURRENT 800
+#endif
 
-// StealthChop and CoolStep defaults
-#define TMC2209_SGT 0
+// -------------------------- TMC driver settings ----------------------------
+// On SKR Mini E3 V2.0 using TMC2209 via UART. If you prefer SW UART set
+// TMC_USE_SW_UART in this file or in Configuration.h/board definitions.
 
-// Provide runtime current control via M906
-#define TMC_MOTOR_CURRENT 1
+// Enable TMC debugging if you need to view registers (comment out for normal use)
+//#define TMC_DEBUG
 
-//----------------------------- BLTouch -------------------------------------
-#define BLTOUCH_DELAY 500 // (ms) Delay between deploy/stow and movement
-#define BLTOUCH_FORCE_SW_MODE
+// StealthChop (quiet) is usually okay for X/Y; move to SpreadCycle for heavy loads.
+#define STEALTHCHOP_XY
 
-//----------------------------- Filament Runout -------------------------------
-// Leave commented; enable if you have a sensor
-//#define FILAMENT_RUNOUT_SENSOR
-//#define FILAMENT_RUNOUT_DISTANCE_MM 7
+// StallGuard/Load detection is not typically used on these printers but can be
+// enabled later if you add sensors.
 
-//----------------------------- Power Loss ----------------------------------
-// Leave commented; enable if you have a supported PSU
-//#define POWER_LOSS_RECOVERY
+// -------------------------- BLTouch / Probe tweaks -------------------------
+// Allow a short delay after deploying probe before probing
+#define BLTOUCH_DELAY 200
+
+// Retract before homing Z (helps CR Touch on some mounts)
+#define Z_CLEARANCE_DEPLOY_PROBE 5
+#define Z_CLEARANCE_BETWEEN_PROBES 2
+#define Z_AFTER_PROBE 5
+
+// -------------------------- Safety / Thermal -------------------------------
+// Increase the allowed watch period for long bed meshes or slow probes
+#define TEMP_RESIDENCY_TIME 10
+#define TEMP_RESIDENCY_HYSTERESIS 3
+
+// -------------------------- Misc Helpers ----------------------------------
+// Faster LCD backlight turnoff when idle to avoid heat contribution
+//#define LCD_BACKLIGHT_TIMEOUT 60
+
+// -------------------------- Notes & Next Steps -----------------------------
+// - Verify X_CURRENT/Y_CURRENT/Z_CURRENT/E0_CURRENT against real driver/stepper
+//   ratings. Typical values for SKR Mini E3 with TMC2209 and Ender steppers
+//   are 600-900 mA depending on hardware and microstepping.
+// - If you want HW-UART for TMC2209, ensure the board definition sets
+//   the correct UART pins or configure Software UART here.
+// - Tune BLTOUCH probe Z offset precisely and update Configuration.h
+// - After merging to your base branch, run PlatformIO build:
+//     platformio run -e STM32F103RC_btt
 
 #endif // CONFIGURATION_ADV_H
