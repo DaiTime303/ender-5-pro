@@ -63,11 +63,14 @@
 #define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }
 #define DEFAULT_MAX_ACCELERATION      { 1000,1000,100,10000 }
 
+#define X_MAX_POS 220
+#define Y_MAX_POS 220
+
 // Homing settings
-#define HOMING_BUMP_DIVISOR { 2, 2, 4 }
+#define HOMING_BUMP_DIVISOR { 8, 8, 4 }
 
 // Block buffer size for movement commands
-#define BLOCK_BUFFER_SIZE 32
+#define BLOCK_BUFFER_SIZE 16
 
 // Axis relative modes (X, Y, Z)
 #define AXIS_RELATIVE_MODES { false, false, false }
