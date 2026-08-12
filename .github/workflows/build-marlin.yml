@@ -16,16 +16,16 @@ jobs:
         with:
           repository: MarlinFirmware/Marlin
           ref: bugfix-2.1.x
-          path: marlin
+          path: Marlin
 
       - name: Copy config files into Marlin
         run: |
           mkdir -p marlin/Marlin
-          cp -v .github/marlin-config/Configuration.h marlin/Marlin/Configuration.h
-          cp -v .github/marlin-config/Configuration_adv.h marlin/Marlin/Configuration_adv.h
+          cp -v .github/marlin-config/Configuration.h Marlin/Marlin/Configuration.h
+          cp -v .github/marlin-config/Configuration_adv.h Marlin/Marlin/Configuration_adv.h
 
       - name: Show head of Configuration.h
-        run: sed -n '1,120p' marlin/Marlin/Configuration.h || true
+        run: sed -n '1,120p' Marlin/Marlin/Configuration.h || true
 
       - name: Set up Python/PlatformIO
         uses: actions/setup-python@v4
@@ -38,14 +38,14 @@ jobs:
           pip install -U platformio
 
       - name: Build Marlin for SKR Mini E3 V2 (STM32F103RC_btt)
-        working-directory: marlin
-        run: |
+       working-directory: Marlin
+       run: |
           platformio run -e STM32F103RC_btt -v
-
+          
       - name: Upload firmware artifact
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: marlin-firmware-binary
           path: |
-            marlin/.pio/build/STM32F103RC_btt/firmware.bin
+            Marlin/.pio/build/STM32F103RC_btt/firmware.bin
