@@ -63,6 +63,18 @@
 #define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }
 #define DEFAULT_MAX_ACCELERATION      { 1000,1000,100,10000 }
 
+// Homing settings
+#define HOMING_BUMP_DIVISOR { 2, 2, 4 }
+
+// Block buffer size for movement commands
+#define BLOCK_BUFFER_SIZE 32
+
+// Axis relative modes (X, Y, Z)
+#define AXIS_RELATIVE_MODES { false, false, false }
+
+// Maximum position for X and Y axes
+#define X_MAX_POS 220
+#define Y_MAX_POS 220
 //===========================================================================
 //========================== Endstop / Probe Options =========================
 //===========================================================================
