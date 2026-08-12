@@ -8,6 +8,10 @@
 #ifndef CONFIGURATION_ADV_H
 #define CONFIGURATION_ADV_H
 
+// Configuration_adv header version to satisfy SanityCheck
+#define CONFIGURATION_ADV_H_VERSION 02010300
+#define CONFIGURATION_ADV_H_AUTHOR "copilot@github - adapted"
+
 // -------------------------- Stepper motor currents --------------------------
 // Values are in mA. Start conservative and tune up as needed.
 #ifndef X_CURRENT
@@ -32,9 +36,6 @@
 
 // StealthChop (quiet) is usually okay for X/Y; move to SpreadCycle for heavy loads.
 #define STEALTHCHOP_XY
-
-// StallGuard/Load detection is not typically used on these printers but can be
-// enabled later if you add sensors.
 
 // -------------------------- BLTouch / Probe tweaks -------------------------
 // Allow a short delay after deploying probe before probing

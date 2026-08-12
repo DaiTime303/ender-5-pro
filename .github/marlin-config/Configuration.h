@@ -15,6 +15,12 @@
 #define CONFIGURATION_H_VERSION 02010300
 #define CONFIGURATION_H_AUTHOR "copilot@github - customized for DaiTime303"
 
+// Endstop pullups are required for BLTouch on Z probe pins in many setups
+#define ENDSTOPPULLUPS
+
+// BLTouch requires the probe endstop hit state to be HIGH
+#define Z_MIN_PROBE_ENDSTOP_HIT_STATE HIGH
+
 // Minimum steps per segment - satisfy the Changes.h requirement
 #define MIN_STEPS_PER_SEGMENT 6
 
@@ -80,6 +86,10 @@
 // Enable Bilinear bed leveling for large beds
 #define AUTO_BED_LEVELING_BILINEAR
 #define RESTORE_LEVELING_AFTER_G28
+
+// Grid points for bilinear must be >=3
+#define GRID_MAX_POINTS_X 5
+#define GRID_MAX_POINTS_Y 5
 
 // Use probe for homing (disable mechanical Z endstop)
 #define Z_MIN_PROBE_REPEATABILITY_TEST
