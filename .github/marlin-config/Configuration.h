@@ -1,9 +1,4 @@
-/*
-  Marlin Configuration.h - adapted from Marlin bugfix-2.1.x
-  Customized for: Ender 5 Pro + MicroSwiss direct drive + MicroSwiss all-metal hotend + CR Touch
-  Board: BTT SKR Mini E3 V2.0 (STM32F103RC_btt)
-*/
-
+/* Minimal, sanity-check-passing Configuration.h — adjust values for your hardware */
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
@@ -24,39 +19,34 @@
 #define HEATER_0_MAXTEMP 275
 #define BED_MAXTEMP 120
 
+/* Machine geometry - must exist and be consistent */
+#define X_MIN_POS 0
+#define Y_MIN_POS 0
+#define Z_MIN_POS 0
 #define X_BED_SIZE 220
 #define Y_BED_SIZE 220
 #define Z_MAX_POS 300
 
-#define X_MIN_POS 0
-#define Y_MIN_POS 0
-#define Z_MIN_POS 0
-
 #define X_MAX_POS (X_MIN_POS + X_BED_SIZE)
 #define Y_MAX_POS (Y_MIN_POS + Y_BED_SIZE)
 
-/* Homing bump divisor (scalar expected by SanityCheck) */
+/* Required sanity values */
 #define HOMING_BUMP_DIVISOR 8
-
 #define BLOCK_BUFFER_SIZE 16
-
-/* Axis relative modes (X, Y, Z) */
 #define AXIS_RELATIVE_MODES { false, false, false }
 
-/* Default axis settings MUST match the number of logical axes (3).
-   Remove the extruder element here — extruder defaults are handled separately. */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400 }  // X, Y, Z
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5 }  // mm/s X, Y, Z
-#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100 } // X, Y, Z
+/* Arrays must match logical axes (3) for this Marlin branch */
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400 }  /* X, Y, Z */
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5 }  /* mm/s */
+#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100 }
 
-/* Z probe / homing placeholders required by SanityCheck */
+/* Z probe / homing placeholders */
 #ifndef Z_PROBE_LOW_POINT
   #define Z_PROBE_LOW_POINT 0
 #endif
 
 #ifndef HOMING_FEEDRATE_MM_M
-  /* mm/min X, Y, Z (placeholders) */
-  #define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) }
+  #define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) } /* mm/min X Y Z */
 #endif
 
 /* Probe / endstop options */
@@ -70,7 +60,7 @@
 #define GRID_MAX_POINTS_Y 5
 #define Z_MIN_PROBE_REPEATABILITY_TEST
 
-/* TMC drivers placeholders */
+/* TMC placeholders */
 #define X_DRIVER_TYPE  TMC2209
 #define Y_DRIVER_TYPE  TMC2209
 #define Z_DRIVER_TYPE  TMC2209
@@ -84,4 +74,4 @@
 #define THERMAL_PROTECTION_BED
 #define EEPROM_SETTINGS
 
-#endif // CONFIGURATION_H
+#endif /* CONFIGURATION_H */
