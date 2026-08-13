@@ -39,10 +39,9 @@
 
 // TMC2209 Chopper Timing Configuration
 #define CHOPPER_TIMING { \
-  .toff = 3,  /* Off time (clock cycles) */ \
-  .hstrt = 1, /* Hysteresis start */ \
-  .hend = 2,  /* Hysteresis end */ \
-  .tbl = 2    /* Blanking time */ \
+  .toff = 3,           /* Off time (clock cycles) */ \
+  .hstrt = 1,          /* Hysteresis start */ \
+  .hend = 2            /* Hysteresis end */ \
 }
 
 // StallGuard/Load detection is not typically used on these printers but can be
