@@ -12,6 +12,10 @@
 #define CONFIGURATION_ADV_H_VERSION 02010300
 #define CONFIGURATION_ADV_H_AUTHOR "copilot@github - adapted"
 
+// Command queue settings
+#define BUFSIZE 4              // Number of commands in the queue (4-16)
+#define MAX_CMD_SIZE 96        // Maximum length of a single command line
+
 // -------------------------- Stepper motor currents --------------------------
 // Values are in mA. Start conservative and tune up as needed.
 #ifndef X_CURRENT
