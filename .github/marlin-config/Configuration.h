@@ -31,7 +31,7 @@
 #define Y_MAX_POS (Y_MIN_POS + Y_BED_SIZE)
 
 /* Required sanity values */
-#define HOMING_BUMP_DIVISOR { 8, 8, 8 }
+#define HOMING_BUMP_DIVISOR { 2, 2, 1 }
 #define BLOCK_BUFFER_SIZE 16
 #define AXIS_RELATIVE_MODES { false, false, false }
 
