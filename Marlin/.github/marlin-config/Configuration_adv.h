@@ -37,6 +37,14 @@
 // StealthChop (quiet) is usually okay for X/Y; move to SpreadCycle for heavy loads.
 #define STEALTHCHOP_XY
 
+// TMC2209 Chopper Timing Configuration
+#define CHOPPER_TIMING { \
+  .toff = 3,  /* Off time (clock cycles) */ \
+  .hstrt = 1, /* Hysteresis start */ \
+  .hend = 2,  /* Hysteresis end */ \
+  .tbl = 2    /* Blanking time */ \
+}
+
 // StallGuard/Load detection is not typically used on these printers but can be
 // enabled later if you add sensors.
 
