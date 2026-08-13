@@ -34,6 +34,7 @@
 #define HOMING_BUMP_DIVISOR { 2, 2, 1 }
 #define BLOCK_BUFFER_SIZE 16
 #define AXIS_RELATIVE_MODES { false, false, false }
+#define HOMING_FEEDRATE_MM_M { 50*60, 50*60, 4*60 }
 
 /* Arrays must match logical axes (3) for this Marlin branch */
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400 }  /* X, Y, Z */
