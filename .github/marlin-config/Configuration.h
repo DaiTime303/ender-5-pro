@@ -44,9 +44,6 @@
 /* Z probe / homing placeholders */
 #define Z_PROBE_LOW_POINT -2
 
-#ifndef HOMING_FEEDRATE_MM_M
-#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) } /* mm/min X Y Z */
-
 /* Probe / endstop options */
 #define BLTOUCH
 #define USE_PROBE_FOR_Z_HOMING
