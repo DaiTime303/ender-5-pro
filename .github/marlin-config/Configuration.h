@@ -36,6 +36,11 @@
 #define AXIS_RELATIVE_MODES { false, false, false }
 #define HOMING_FEEDRATE_MM_M { 50*60, 50*60, 4*60 }
 
+/* Home direction: -1 for min, 1 for max */
+#define X_HOME_DIR -1
+#define Y_HOME_DIR -1
+#define Z_HOME_DIR -1
+
 /* Arrays must match logical axes (3) for this Marlin branch */
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400 }  /* X, Y, Z */
 #define DEFAULT_MAX_FEEDRATE          { 300, 300, 5 }  /* mm/s */
@@ -64,6 +69,16 @@
 
 #define DEFAULT_AXIS_CURRENT 800
 #define DEFAULT_E0_CURRENT 800
+
+/* Temperature settings */
+#define THERMAL_PROTECTION_HOTENDS
+#define THERMAL_PROTECTION_BED
+#define TEMP_RESIDENCY_TIME 10
+#define TEMP_RESIDENCY_HYSTERESIS 3
+#define TEMP_BED_HYSTERESIS 3
+
+/* Serial communication */
+#define PROPORTIONAL_FONT_RATIO 1
 
 #define THERMAL_PROTECTION_HOTENDS
 #define THERMAL_PROTECTION_BED
