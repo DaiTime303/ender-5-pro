@@ -44,8 +44,8 @@
 // TMC2209 Chopper Timing Configuration
 #define CHOPPER_TIMING { \
   .toff = 3,           /* Off time (clock cycles) */ \
-  .hstrt = 1,          /* Hysteresis start */ \
-  .hend = 2            /* Hysteresis end */ \
+  .hend = 2,           /* Hysteresis end */ \
+  .hstrt = 1           /* Hysteresis start */ \
 }
 
 // -------------------------- BLTouch / Probe tweaks -------------------------
