@@ -41,8 +41,7 @@
 #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100 }
 
 /* Z probe / homing placeholders */
-#ifndef Z_PROBE_LOW_POINT
-  #define Z_PROBE_LOW_POINT 0
+#define Z_PROBE_LOW_POINT -2
 #endif
 
 #ifndef HOMING_FEEDRATE_MM_M
